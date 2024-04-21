@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import openpyxl
 import time
+import xlrd
 
 st.set_page_config(layout="wide")
 st.markdown("""
@@ -70,6 +71,11 @@ add_selectbox = st.selectbox(
     'Forecast -',
     ('GDP change in %', 'Unemployment change in %')
 )
+
+gdp_final=pd.read_excel("dataset/test.xlsx")
+unemp_final=pd.read_excel("dataset/test2.xlsx")
+both_final=pd.read_excel("dataset/both.xlsx")
+
 res=st.button('Generate')
 if res==True:
     with st.status("Predicting...", expanded=True) as status:
@@ -81,10 +87,12 @@ if res==True:
         time.sleep(1)
         status.update(label="Prediction complete!", state="complete", expanded=False)
     if add_selectbox=="GDP change in %":
-        st.line_chart(data=gdp_show,x="Year",y="GDP")
+        st.line_chart(data=gdp_final,x="Year",y=['Old','Predicted'],color=["#0068c9","#4be4ff"])
     else:
-        st.line_chart(data=unemp_show,x="Year",y="Unemployment")
+        st.line_chart(data=unemp_final,x="Year",y=['Old','Predicted'],color=["#ff2b2b","#ffd16a"])
 
-    st.subheader("Plot both")    
-
+flag=st.button("Plot both")
+if flag==True:
+    st.line_chart(data=both_final,x="Years",y=['GDP_Old','GDP_Predicted','Unemp_Old','Unemp_Predicted'],color=["#0068c9","#4be4ff","#ff2b2b","#ffd16a"])
+    st.subheader("From the plot we can see that there is a chnace of recession between 2027 and 2032")
 
