@@ -1,2 +1,2 @@
 # Recession-Prediction-India
-##deployed at :[link](recessionpredictionindia.streamlit.com)
+## Deployed at :[link](recessionpredictionindia.streamlit.com)
