@@ -95,5 +95,5 @@ if res==True:
 flag=st.button("Plot both")
 if flag==True:
     st.line_chart(data=both_final,x="Years",y=['GDP_Old','GDP_Predicted','Unemp_Old','Unemp_Predicted'],color=["#0068c9","#4be4ff","#ff2b2b","#ffd16a"])
-    st.subheader("From the plot we can see that there is a chnace of recession between 2027 and 2032")
+    st.subheader("From the plot we can see that there is a chance of recession between the years 2027 and 2032")
 
